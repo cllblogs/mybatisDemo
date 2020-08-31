@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--别名-->
+    <typeAliases>
+        <typeAlias alias="user" type="com.cll.entity.User"/>
+    </typeAliases>
+    <!-- 运行环境配置 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 事务管理器配置，type="JDBC"：mybatis框架默认使用jdbc事务 -->
+            <transactionManager type="JDBC"/>
+            <!--数据源配置，type="POOLED"：mybatis框架提供的连接池  -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://123.56.18.97:53306/area_db"/>
+                <property name="username" value="cll"/>
+                <property name="password" value="cll177392@."/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--映射配置文件路径-->
+    <mappers>
+        <mapper resource="userMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指用户自定义的命名空间。 -->
+<mapper namespace="com.cll.dao.userdao">
+    <select id="userMapper" resultType="com.cll.entity.User">
+        select id,name,password from user
+    </select>
+    <insert id="addUser"  parameterType="com.cll.entity.User">
+   insert into user (id,name,password) values(#{id},#{name},#{password})
+    </insert>
+    <select id="getUserByid"  resultType="com.cll.entity.User">
+        SELECT * from user where id=#{id}
+    </select>
+    </mapper>
