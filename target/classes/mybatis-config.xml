@@ -42,8 +42,7 @@
 <!--
         <package name="com/cll/dao"/>
 -->
-       <!-- <mapper resource="userMapper.xml"/>-->
-        <mapper class="com.cll.dao.userdao"/>
+       <mapper resource="userMapper.xml"/>
 
     </mappers>
 </configuration>
