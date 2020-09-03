@@ -3,6 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties>
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://123.56.18.97:53306/area_db"/>
+        <property name="username" value="cll"/>
+        <property name="password" value="cll177392@."/>
+    </properties>
+    <settings>
+        <!-- 添加日志相关setting配置，目的是在控制台能够看出打印日志，可以看到执行的SQL语句 -->
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
     <!--别名-->
     <typeAliases>
         <typeAlias alias="user" type="com.cll.entity.User"/>
@@ -14,15 +24,25 @@
             <transactionManager type="JDBC"/>
             <!--数据源配置，type="POOLED"：mybatis框架提供的连接池  -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://123.56.18.97:53306/area_db"/>
-                <property name="username" value="cll"/>
-                <property name="password" value="cll177392@."/>
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
             </dataSource>
         </environment>
     </environments>
     <!--映射配置文件路径-->
     <mappers>
-        <mapper resource="userMapper.xml"/>
+        <!-- 还有其他方法，常用的就以下两种，多推荐第二种，
+						否则当有很多个mapper接口时配置文件会变得较为冗长 -->
+        <!-- 方法一：直接引入某个mapper接口的具体配置文件 -->
+        <!-- 方法二：直接引入mapper接口所在的包，以后只要在该包下的mapper接口都可直接使用，不需要再				重新引入  -->
+        <!--方法一：<mapper resource="userMapper.xml"/>-->
+        <!--方法二:-->
+<!--
+        <package name="com/cll/dao"/>
+-->
+       <mapper resource="userMapper.xml"/>
+
     </mappers>
 </configuration>
